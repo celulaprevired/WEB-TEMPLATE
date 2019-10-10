@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	</br>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<p>
+					<a class="btn btn-primary btn-xs" th:href="@{/cliente/crear}">Crear
+						Cliente</a>
+				</p>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Email</th>
+							<th scope="col">Fecha</th>
+							<th scope="col">Crear Factura</th>
+							<th scope="col">Editar</th>
+							<th scope="col">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cliente : ${clientes}">
+							<th scope="row"><a class="btn btn-secondary btn-xs"
+								th:href="@{/cliente/detalle/}+${cliente.id}">Ver Detalle</a></th>
+							<td th:text="${cliente.nombre}"></td>
+							<td th:text="${cliente.apellido}"></td>
+							<td th:text="${cliente.email}"></td>
+							<td th:text="${cliente.createAt}"></td>
+							<td><a class="btn btn-success" style="color:white"
+								th:href="@{/factura/crear/}+${cliente.id}">Crear Factura</a></td>
+							<td><a class="btn btn-warning" style="color:white"
+								th:href="@{/cliente/editar/}+${cliente.id}">Editar</a></td>
+							<td><a th:href="@{/cliente/eliminar/}+${cliente.id}"
+								class="btn btn-danger">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

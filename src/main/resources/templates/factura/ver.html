@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<table class="table table-bordered table-striped my-4">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Cantidad</th>
+							<th>Nombre</th>
+							<th>Precio</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="factura : ${factura.items}">
+							<td th:text="${factura.id}"></td>
+							<td th:text="${factura.cantidad}"></td>
+							<td th:text="${factura.producto.nombre}"></td>
+							<td th:text="${factura.producto.precio}"></td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
